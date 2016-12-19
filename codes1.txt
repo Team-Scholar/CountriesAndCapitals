@@ -1,0 +1,103 @@
+<?php
+  $page = $_SERVER['http://localhost/countriesandcapital/mymessages.php'];
+$sec = "16";
+     //accepting variables from the text box on our site
+  //this feature is also used for manually sending messages to the intended user 
+
+ //saving the bot token into the variable $botToken
+$botToken = "289707591:AAGX8rag1PoZ_1lZ0lhgln3a77sqcWMPEmg";
+//instantiating the url for telegram
+$website = "https://api.telegram.org/bot".$botToken;
+
+
+$update = file_get_contents($website."/getupdates");
+$update = json_decode($update, TRUE);
+//getting the last array locaton of the recieved message
+$current_update =end($update["result"]);
+//getting the chat id of the user
+$chatId = $current_update["message"]["chat"]["id"]; 
+//recieving input message from the user and saving it in a variable
+$newmessage=$current_update["message"]["text"];
+
+$teleuser=$current_update["message"]["from"]["first_name"];  
+//file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$messageme); 
+  
+   //checking the text recieved from the user and giving it an associated message
+   switch($newmessage) {
+        
+           case "/begin":
+            $botMessage="this is your bot";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+        case "/end":
+            $botMessage="end ";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+           $botMessage="hello there!";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+        case "hello":
+            $botMessage="hi";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+         case "Hello":
+            $botMessage="hi";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+case "bye":
+            $botMessage="nice chating you";
+            file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+case "how old are you?":
+            $botMessage="just a year old";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+        break;
+case "/help":
+             $botMessage="check the symbol / near your text box";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+        case "/go":
+            $botMessage="hello ";
+            file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+            // code incase you want to use a database 
+        
+            case "/afghanistan":
+            $botMessage="The capital is Kabul :)";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+////////////////////////////////////////////////////////////////////////////////////
+            case "/albania"  :
+            $botMessage="The capital is Tirana";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+//////////////////////////////////////////////////////////////////////////////////////
+             case "/algeria":
+            $botMessage="The capital is Algiers";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+///////////////////////////////////////////////////////////////////////////////////
+              case "/andorra":
+            $botMessage="The capital is Andorra la Vella";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+//////////////////////////////////////////////////////////////////////////////
+            case "/angola" :
+            $botMessage="The capital is Luanda";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+//////////////////////////////////////////////////////////////////////////////
+            case "/antigua and Barbuda":
+            $botMessage="The capital is Saint John's";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+            
+////////////////////////////////////////////////////////////////////////////////          
+            case "/argentina?":
+            $botMessage="The capital is Buenos Aires";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
